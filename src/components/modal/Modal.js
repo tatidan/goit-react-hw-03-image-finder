@@ -4,7 +4,6 @@
 
 //Внешний вид похож на функционал этого VanillaJS-плагина, только вместо
 //белого модального окна рендерится изображение(в примере нажми Run).
-//Анимацию делать не нужно!
 
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
@@ -37,7 +36,10 @@ export default class Modal extends Component {
     return createPortal(
       <div className="Overlay" onClick={this.handleBackdropClick}>
         <div className="Modal">
-          <img src="" alt="" />
+          <img
+            // src={largeImageURL}
+            alt=""
+          />
         </div>
       </div>,
       modalRoot

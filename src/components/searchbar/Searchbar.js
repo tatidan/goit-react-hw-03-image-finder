@@ -1,10 +1,12 @@
-//Компонент принимает один проп onSubmit - функцию для передачи значения инпута
-//при сабмите формы.Создает DOM - элемент следующей структуры.
+//Компонент принимает один проп onSubmit -
+//функцию для передачи значения инпута
+//при сабмите формы.
 import React, { Component } from "react";
 
 class Searchbar extends Component {
   state = {
     keyWord: "",
+    page: 1,
   };
 
   handleChange = (e) => {
@@ -15,12 +17,14 @@ class Searchbar extends Component {
     e.preventDefault();
     console.log(this.state.keyWord);
     //тут значение keyWord
+    //тут вызов функции axios api c пропсом keyWord
+    this.setState({ keyWord: this.state.keyWord });
 
-    this.reset();
+    // this.reset();
   };
 
   reset = () => {
-    this.setState({ keyWord: "" });
+    this.setState({ keyWord: "", page: 1 });
   };
 
   render() {

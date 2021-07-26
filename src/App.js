@@ -16,13 +16,19 @@ class App extends Component {
 
   onSubmit = (e) => {
     console.log(e);
+    console.log(e.target);
   };
 
   render() {
     const { showModal } = this.state;
     return (
       <div className="App">
-        {showModal && <Modal onClose={this.toggleModal} />}
+        {showModal && (
+          <Modal
+            onClose={this.toggleModal}
+            // largeImageURL={largeImageURL}
+          />
+        )}
         <Searchbar onSubmit={this.onSubmit} />
         <ImageGallery />
       </div>
