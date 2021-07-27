@@ -1,30 +1,25 @@
-//Компонент принимает один проп onSubmit -
-//функцию для передачи значения инпута
-//при сабмите формы.
 import React, { Component } from "react";
 
 class Searchbar extends Component {
   state = {
-    keyWord: "",
+    query: "",
     page: 1,
   };
 
   handleChange = (e) => {
-    this.setState({ keyWord: e.target.value });
+    this.setState({ query: e.currentTarget.value });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.keyWord);
-    //тут значение keyWord
-    //тут вызов функции axios api c пропсом keyWord
-    this.setState({ keyWord: this.state.keyWord });
+    console.log(this.state);
+    this.props.onSubmit(this.state.query);
 
-    // this.reset();
+    this.reset();
   };
 
   reset = () => {
-    this.setState({ keyWord: "", page: 1 });
+    this.setState({ query: "", page: 1 });
   };
 
   render() {
@@ -42,6 +37,7 @@ class Searchbar extends Component {
             autofocus
             placeholder="Search images and photos"
             onChange={this.handleChange}
+            value={this.state.query}
           />
         </form>
       </header>

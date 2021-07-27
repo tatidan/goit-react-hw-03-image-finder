@@ -1,23 +1,19 @@
-import React from 'react';
+import React, { Component } from "react";
 
-const Button = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-};
+class Button extends Component {
+  handleClick = (e) => {
+    if (e.currentTarget === e.target) {
+      this.props.fetchPhotos();
+    }
+  };
+
+  render() {
+    return (
+      <button className="Button" type="button" onClick={this.handleClick}>
+        Load more
+      </button>
+    );
+  }
+}
 
 export default Button;
-
-// При нажатии на кнопку Load more должна догружаться следующая порция 
-//изображений и рендериться вместе с предыдущими.После загрузки и рендера 
-//новой партии изображений страница должна плавно скролиться.Для скрола используй следующий код.
-
-// window.scrollTo({
-//   top: document.documentElement.scrollHeight,
-//   behavior: 'smooth',
-// });
-
-// Кнопка должна рендерится только тогда, когда есть какие-то загруженные изобаржения. 
-//Если массив изображений пуст, кнопка не рендерится.
